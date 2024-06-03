@@ -1,13 +1,11 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import dotenv from 'dotenv/config';
 import mongoose from 'mongoose';
 import path from 'path';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-dotenv.config();
 
 import indexRouter from './routes/index.js';
 import signupRouter from './routes/signup.js';
