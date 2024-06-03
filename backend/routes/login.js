@@ -5,10 +5,9 @@ const router = express.Router();
 
 router.post(
   '/',
-  asyncHandler(async (req, res, next) => {
-    res.json({
-      title: 'login',
-    });
+  passport.authenticate('local', {
+    failureRedirect: '/login/failure',
+    successRedirect: '/login/success',
   }),
 );
 
