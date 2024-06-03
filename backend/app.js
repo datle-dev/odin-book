@@ -11,6 +11,8 @@ const __dirname = path.dirname(__filename);
 
 import './auth/passport.js';
 
+dotenv.config();
+
 import indexRouter from './routes/index.js';
 import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
