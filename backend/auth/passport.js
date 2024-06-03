@@ -1,8 +1,8 @@
 import passport from 'passport';
 import passportLocal from 'passport-local';
 
-import User from '../models/user';
-import { isValidPassword } from './password-utils';
+import User from '../models/user.js';
+import { isValidPassword } from './password-utils.js';
 
 const LocalStrategy = passportLocal.Strategy;
 
