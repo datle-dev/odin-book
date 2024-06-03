@@ -14,15 +14,19 @@ router.post(
 
 router.get(
   '/success',
-  res.json({
-    title: 'login success',
+  asyncHandler(async (req, res, next) => {
+    res.json({
+      title: 'login success',
+    });
   }),
 );
 
 router.get(
   '/failure',
-  res.json({
-    title: 'login failure',
+  asyncHandler(async (req, res, next) => {
+    res.json({
+      title: 'login failure',
+    });
   }),
 );
 
