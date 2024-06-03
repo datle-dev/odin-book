@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv/config';
 import mongoose from 'mongoose';
+import passport from 'passport';
 import session from 'express-session';
-import MongoStore from 'connect_mongo';
+import MongoStore from 'connect-mongo';
 import path from 'path';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
@@ -10,8 +11,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import './auth/passport.js';
-
-dotenv.config();
 
 import indexRouter from './routes/index.js';
 import signupRouter from './routes/signup.js';
