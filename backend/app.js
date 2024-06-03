@@ -1,10 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import session from 'express-session';
+import MongoStore from 'connect_mongo';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+import './auth/passport.js';
 
 dotenv.config();
 
@@ -30,6 +34,31 @@ async function main() {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const sessionStore = MongoStore.create({
+  client: mongoose.connection.getClient(),
+  collectionName: 'sessions',
+});
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24, // 1 day in ms
+    },
+  }),
+);
+
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  console.log(req.session);
+  console.log(req.user);
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
