@@ -7,4 +7,6 @@ const UserSchema = new Schema({
   salt: { type: String, required: true },
 });
 
-module.exports = mongoose.model('User', UserSchema);
+const model = mongoose.model('User', UserSchema);
+
+export default model;

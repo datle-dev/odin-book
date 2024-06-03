@@ -2,8 +2,8 @@ import express from 'express';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
 
-import User from '../models/user';
-import { genPassword } from '../auth/password-utils';
+import User from '../models/user.js';
+import { genPassword } from '../auth/password-utils.js';
 
 const router = express.Router();
 
