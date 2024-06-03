@@ -11,4 +11,18 @@ router.post(
   }),
 );
 
+router.get(
+  '/success',
+  res.json({
+    title: 'login success',
+  }),
+);
+
+router.get(
+  '/failure',
+  res.json({
+    title: 'login failure',
+  }),
+);
+
 export default router;
